@@ -15,4 +15,4 @@ jobs:
         with:
           max_post_count: "4"
           remove_duplicates: true
-          feed_list: "https://medium.com/feed/@j51217123"
+          feed_list: "https://medium.com/feed/@jasonscchien"
