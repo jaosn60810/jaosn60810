@@ -11,8 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: gautamkrishnar/blog-post-workflow@v1
+      - uses: gautamkrishnar/blog-post-workflow@master
         with:
           max_post_count: "4"
+          filter_comments: "" 
+          commit_message: "Updated readme with the latest Medium data"
           remove_duplicates: true
-          feed_list: "https://medium.com/feed/@jasonscchien,https://www.gautamkrishnar.com/feed/"
+          feed_list: "https://medium.com/feed/@jasonscchien"
