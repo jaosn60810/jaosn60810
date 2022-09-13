@@ -8,8 +8,8 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
-- [fly.io 使用心得，從註冊、佈署 NodeJS 專案到網域設定](https://uu9924079.medium.com/fly-io-%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97-%E5%BE%9E%E8%A8%BB%E5%86%8A-%E4%BD%88%E7%BD%B2-nodejs-%E5%B0%88%E6%A1%88%E5%88%B0%E7%B6%B2%E5%9F%9F%E8%A8%AD%E5%AE%9A-2fee3b64fbe6?source=rss-3df072374dc6------2)
-- [避免 AJAX 造成的 Race condition](https://uu9924079.medium.com/%E9%81%BF%E5%85%8D-ajax-%E9%80%A0%E6%88%90%E7%9A%84-race-condition-9db32b8415a4?source=rss-3df072374dc6------2)
-- [《電腦玩物esor的時間管理哲學》上課心得](https://uu9924079.medium.com/%E9%9B%BB%E8%85%A6%E7%8E%A9%E7%89%A9esor%E7%9A%84%E6%99%82%E9%96%93%E7%AE%A1%E7%90%86%E5%93%B2%E5%AD%B8-%E4%B8%8A%E8%AA%B2%E5%BF%83%E5%BE%97-f08adb4dca72?source=rss-3df072374dc6------2)
-- [Vue.js 3 學習筆記－透過實現的方式理解 Vue.js 的響應式原理（五）](https://uu9924079.medium.com/vue-js-3-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E9%80%8F%E9%81%8E%E5%AF%A6%E7%8F%BE%E7%9A%84%E6%96%B9%E5%BC%8F%E7%90%86%E8%A7%A3-vue-js-%E7%9A%84%E9%9F%BF%E6%87%89%E5%BC%8F%E5%8E%9F%E7%90%86-%E4%BA%94-6d08386c953e?source=rss-3df072374dc6------2)
+- [抓住人生轉捩點，讓 AppWorks School 幫你一把！Batch #13 Front-End Class](https://medium.com/appworks-school/%E6%8A%93%E4%BD%8F%E4%BA%BA%E7%94%9F%E8%BD%89%E6%8D%A9%E9%BB%9E-%E8%AE%93-appworks-school-%E5%B9%AB%E4%BD%A0%E4%B8%80%E6%8A%8A-81a64f0d9b99?source=rss-8ed9ce986cb0------2)
+- [AppWorks School 非本科前端轉職心得](https://medium.com/j51217123/appworks-school-%E9%9D%9E%E6%9C%AC%E7%A7%91%E5%89%8D%E7%AB%AF%E8%BD%89%E8%81%B7%E5%BF%83%E5%BE%97-f9a23e318066?source=rss-8ed9ce986cb0------2)
+- [【 JS 學習筆記 】包裹物件、強制轉型](https://medium.com/j51217123/js-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-%E5%8C%85%E8%A3%B9%E7%89%A9%E4%BB%B6-%E5%BC%B7%E5%88%B6%E8%BD%89%E5%9E%8B-13ff82fea540?source=rss-8ed9ce986cb0------2)
+- [Github Pages 靜態網頁](https://medium.com/j51217123/github-pages-%E9%9D%9C%E6%85%8B%E7%B6%B2%E9%A0%81-49c361fecfd1?source=rss-8ed9ce986cb0------2)
 <!-- BLOG-POST-LIST:END -->
