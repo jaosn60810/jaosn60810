@@ -8,8 +8,8 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Map vs Object in JavaScript](https://jasonscchien.medium.com/map-vs-object-in-javascript-6e90fbeb992e?source=rss-2cc1a5b0527b------2)
 - [25 VS Code Productivity Tips and Speed Hacks](https://jasonscchien.medium.com/25-vs-code-productivity-tips-and-speed-hacks-d359a83fcf6c?source=rss-2cc1a5b0527b------2)
 - [6 Advanced Flexbox Features You Probably Don’t Know](https://jasonscchien.medium.com/6-advanced-flexbox-features-you-probably-dont-know-bc793903a655?source=rss-2cc1a5b0527b------2)
 - [5 Must Know JavaScript Features That Almost Nobody Knows](https://jasonscchien.medium.com/5-must-know-javascript-features-that-almost-nobody-knows-39253d40d4b4?source=rss-2cc1a5b0527b------2)
-- [How To Build Your First TypeScript Project — TODO List Application](https://jasonscchien.medium.com/how-to-build-your-first-typescript-project-todo-list-application-66c47059f7a5?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
