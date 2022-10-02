@@ -8,6 +8,7 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [TypeScript with Vue.js 3](https://jasonscchien.medium.com/typescript-with-vue-js-3-2615c13465be?source=rss-2cc1a5b0527b------2)
 - [Modern JavaScript: ES6 and beyond!](https://jasonscchien.medium.com/modern-javascript-es6-and-beyond-49659a9c175c?source=rss-2cc1a5b0527b------2)
 - [TypeScript Fundamentals](https://jasonscchien.medium.com/typescript-fundamentals-8deec2ccc8e5?source=rss-2cc1a5b0527b------2)
 - [The Geolocation API Simplified](https://jasonscchien.medium.com/the-geolocation-api-simplified-a315fad50c65?source=rss-2cc1a5b0527b------2)
@@ -17,5 +18,4 @@
 - [Add Vue 3 State To Your CSS With V-Bind&lpar;&rpar;](https://jasonscchien.medium.com/add-vue-3-state-to-your-css-with-v-bind-72cde03719d5?source=rss-2cc1a5b0527b------2)
 - [Intro to WebRTC with Daily.co](https://jasonscchien.medium.com/intro-to-webrtc-with-daily-co-aa93dbc76237?source=rss-2cc1a5b0527b------2)
 - [Map vs Object in JavaScript](https://jasonscchien.medium.com/map-vs-object-in-javascript-6e90fbeb992e?source=rss-2cc1a5b0527b------2)
-- [25 VS Code Productivity Tips and Speed Hacks](https://jasonscchien.medium.com/25-vs-code-productivity-tips-and-speed-hacks-d359a83fcf6c?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
