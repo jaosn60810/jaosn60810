@@ -8,6 +8,7 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [「大神來六角」QA 到底在 Q 什麼?](https://jasonscchien.medium.com/%E5%A4%A7%E7%A5%9E%E4%BE%86%E5%85%AD%E8%A7%92-qa-%E5%88%B0%E5%BA%95%E5%9C%A8-q-%E4%BB%80%E9%BA%BC-4926b9c715a2?source=rss-2cc1a5b0527b------2)
 - [Code Zelda in JavaScript with Kaboom.js!](https://jasonscchien.medium.com/code-zelda-in-javascript-with-kaboom-js-5c09f780fb3?source=rss-2cc1a5b0527b------2)
 - [The T3 Stack for Beginners — NextJS, tRPC &amp; Typescript made fun!](https://jasonscchien.medium.com/the-t3-stack-for-beginners-nextjs-trpc-typescript-made-fun-f55b898b8ea5?source=rss-2cc1a5b0527b------2)
 - [TypeScript with Vue.js 3](https://jasonscchien.medium.com/typescript-with-vue-js-3-2615c13465be?source=rss-2cc1a5b0527b------2)
@@ -17,5 +18,4 @@
 - [Handle JavaScript Promises Like A Pro!](https://jasonscchien.medium.com/handle-javascript-promises-like-a-pro-4f3913c2d43c?source=rss-2cc1a5b0527b------2)
 - [Easy Loading Screens with Vue Suspense Components](https://jasonscchien.medium.com/easy-loading-screens-with-vue-suspense-components-e46ebec222a8?source=rss-2cc1a5b0527b------2)
 - [A Simple Vue 3 Reusable Skeleton Loader Component](https://jasonscchien.medium.com/a-simple-vue-3-reusable-skeleton-loader-component-6b2536c16960?source=rss-2cc1a5b0527b------2)
-- [Add Vue 3 State To Your CSS With V-Bind&lpar;&rpar;](https://jasonscchien.medium.com/add-vue-3-state-to-your-css-with-v-bind-72cde03719d5?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
