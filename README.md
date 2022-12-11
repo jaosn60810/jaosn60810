@@ -8,6 +8,7 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Working with Attributes in Vue](https://jasonscchien.medium.com/working-with-attributes-in-vue-e5b7a3bea91c?source=rss-2cc1a5b0527b------2)
 - [Learn PostCSS In 15 Minutes](https://jasonscchien.medium.com/learn-postcss-in-15-minutes-3efbf640c85f?source=rss-2cc1a5b0527b------2)
 - [Vuetify 3 + Nuxt 3 : Vue.js Will Never Be The Same](https://jasonscchien.medium.com/vuetify-3-nuxt-3-vue-js-will-never-be-the-same-51909c36dc5c?source=rss-2cc1a5b0527b------2)
 - [「大神來六角」QA 到底在 Q 什麼?](https://jasonscchien.medium.com/%E5%A4%A7%E7%A5%9E%E4%BE%86%E5%85%AD%E8%A7%92-qa-%E5%88%B0%E5%BA%95%E5%9C%A8-q-%E4%BB%80%E9%BA%BC-4926b9c715a2?source=rss-2cc1a5b0527b------2)
@@ -17,5 +18,4 @@
 - [Modern JavaScript: ES6 and beyond!](https://jasonscchien.medium.com/modern-javascript-es6-and-beyond-49659a9c175c?source=rss-2cc1a5b0527b------2)
 - [TypeScript Fundamentals](https://jasonscchien.medium.com/typescript-fundamentals-8deec2ccc8e5?source=rss-2cc1a5b0527b------2)
 - [The Geolocation API Simplified](https://jasonscchien.medium.com/the-geolocation-api-simplified-a315fad50c65?source=rss-2cc1a5b0527b------2)
-- [Handle JavaScript Promises Like A Pro!](https://jasonscchien.medium.com/handle-javascript-promises-like-a-pro-4f3913c2d43c?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
