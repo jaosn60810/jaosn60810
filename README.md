@@ -8,6 +8,7 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Svelte State Management Guide](https://jasonscchien.medium.com/svelte-state-management-guide-d686d61e7d0a?source=rss-2cc1a5b0527b------2)
 - [This is why you should lazy load routes and components in Vue](https://jasonscchien.medium.com/this-is-why-you-should-lazy-load-routes-and-components-in-vue-9e64de19f28?source=rss-2cc1a5b0527b------2)
 - [5 Async + Await Error Handling Strategies](https://jasonscchien.medium.com/5-async-await-error-handling-strategies-7442885b853a?source=rss-2cc1a5b0527b------2)
 - [Working with Attributes in Vue](https://jasonscchien.medium.com/working-with-attributes-in-vue-e5b7a3bea91c?source=rss-2cc1a5b0527b------2)
@@ -17,5 +18,4 @@
 - [Code Zelda in JavaScript with Kaboom.js!](https://jasonscchien.medium.com/code-zelda-in-javascript-with-kaboom-js-5c09f780fb3?source=rss-2cc1a5b0527b------2)
 - [The T3 Stack for Beginners — NextJS, tRPC &amp; Typescript made fun!](https://jasonscchien.medium.com/the-t3-stack-for-beginners-nextjs-trpc-typescript-made-fun-f55b898b8ea5?source=rss-2cc1a5b0527b------2)
 - [TypeScript with Vue.js 3](https://jasonscchien.medium.com/typescript-with-vue-js-3-2615c13465be?source=rss-2cc1a5b0527b------2)
-- [Modern JavaScript: ES6 and beyond!](https://jasonscchien.medium.com/modern-javascript-es6-and-beyond-49659a9c175c?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
