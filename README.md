@@ -8,6 +8,7 @@
 
 # Blog posts
 <!-- BLOG-POST-LIST:START -->
+- [Section 2: Block Scoping](https://jasonscchien.medium.com/section-2-block-scoping-af630067c440?source=rss-2cc1a5b0527b------2)
 - [Svelte State Management Guide](https://jasonscchien.medium.com/svelte-state-management-guide-d686d61e7d0a?source=rss-2cc1a5b0527b------2)
 - [This is why you should lazy load routes and components in Vue](https://jasonscchien.medium.com/this-is-why-you-should-lazy-load-routes-and-components-in-vue-9e64de19f28?source=rss-2cc1a5b0527b------2)
 - [5 Async + Await Error Handling Strategies](https://jasonscchien.medium.com/5-async-await-error-handling-strategies-7442885b853a?source=rss-2cc1a5b0527b------2)
@@ -17,5 +18,4 @@
 - [「大神來六角」QA 到底在 Q 什麼?](https://jasonscchien.medium.com/%E5%A4%A7%E7%A5%9E%E4%BE%86%E5%85%AD%E8%A7%92-qa-%E5%88%B0%E5%BA%95%E5%9C%A8-q-%E4%BB%80%E9%BA%BC-4926b9c715a2?source=rss-2cc1a5b0527b------2)
 - [Code Zelda in JavaScript with Kaboom.js!](https://jasonscchien.medium.com/code-zelda-in-javascript-with-kaboom-js-5c09f780fb3?source=rss-2cc1a5b0527b------2)
 - [The T3 Stack for Beginners — NextJS, tRPC &amp; Typescript made fun!](https://jasonscchien.medium.com/the-t3-stack-for-beginners-nextjs-trpc-typescript-made-fun-f55b898b8ea5?source=rss-2cc1a5b0527b------2)
-- [TypeScript with Vue.js 3](https://jasonscchien.medium.com/typescript-with-vue-js-3-2615c13465be?source=rss-2cc1a5b0527b------2)
 <!-- BLOG-POST-LIST:END -->
