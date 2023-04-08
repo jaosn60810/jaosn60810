@@ -18,3 +18,19 @@ jobs:
           commit_message: "Updated readme with the latest Medium data"
           remove_duplicates: true
           feed_list: "https://medium.com/feed/@jasonscchien"
+          
+  update_blogs:
+    name: "Update Blogs"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@main
+
+      - name: "📚  Hashnode Updater"
+        uses: "varunsridharan/action-hashnode-blog@main"
+        with:
+          USERNAME: 'jason60810' # Hashnode Username
+          BLOG_URL: 'https://jason60810.hashnode.dev/' # Blog URL
+          COUNT: 10 # MAX Visisble
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
