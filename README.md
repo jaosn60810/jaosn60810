@@ -9,6 +9,16 @@
 
 ## My Latest Blog Posts 👇
 <!-- HASHNODE_BLOG:START -->
+- [Using REST APIs with Protobuf in a Next.js and TypeScript App (Backend in Go)](https://jason60810.hashnode.dev//using-rest-apis-with-protobuf-in-a-nextjs-and-typescript-app-backend-in-go)
+- [Next.js Tutorial For Beginners](https://jason60810.hashnode.dev//nextjs-tutorial-for-beginners)
+- [React Hooks Simplified](https://jason60810.hashnode.dev//react-hooks-simplified-103c8601ba6e)
+- [Section 2: Block Scoping](https://jason60810.hashnode.dev//section-2-block-scoping-af630067c440)
+- [Svelte State Management Guide](https://jason60810.hashnode.dev//svelte-state-management-guide-d686d61e7d0a)
+- [This is why you should lazy load routes and components in Vue](https://jason60810.hashnode.dev//this-is-why-you-should-lazy-load-routes-and-components-in-vue-9e64de19f28)
+- [5 Async + Await Error Handling Strategies](https://jason60810.hashnode.dev//5-async-await-error-handling-strategies-7442885b853a)
+- [Working with Attributes in Vue](https://jason60810.hashnode.dev//working-with-attributes-in-vue-e5b7a3bea91c)
+- [Learn PostCSS In 15 Minutes](https://jason60810.hashnode.dev//learn-postcss-in-15-minutes-3efbf640c85f)
+- [Vuetify 3 + Nuxt 3 : Vue.js Will Never Be The Same](https://jason60810.hashnode.dev//vuetify-3-nuxt-3-vue-js-will-never-be-the-same-51909c36dc5c)
 <!-- HASHNODE_BLOG:END -->
 
 ## Blog posts
