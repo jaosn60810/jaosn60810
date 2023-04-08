@@ -6,7 +6,12 @@
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-# Blog posts
+
+## My Latest Blog Posts 👇
+<!-- HASHNODE_BLOG:START -->
+<!-- HASHNODE_BLOG:END -->
+
+## Blog posts
 <!-- BLOG-POST-LIST:START -->
 - [React Hooks Simplified](https://jasonscchien.medium.com/react-hooks-simplified-103c8601ba6e?source=rss-2cc1a5b0527b------2)
 - [Section 2: Block Scoping](https://jasonscchien.medium.com/section-2-block-scoping-af630067c440?source=rss-2cc1a5b0527b------2)
