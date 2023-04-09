@@ -1,13 +1,14 @@
+<a href="https://app.daily.dev/jason60810"><img src="https://api.daily.dev/devcards/6a5a6914fff5418abc5871be9e73ae35.png?r=lfr" width="400" alt="Jason Chen's Dev Card"/></a>
+
 <img align="left" width="47%" src="https://github-readme-stats.vercel.app/api?username=jaosn60810&show_icons=true&theme=radical"/>
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jaosn60810&layout=compact)](https://github.com/jaosn60810/github-readme-stats)
 
 ![codewars](https://www.codewars.com/users/JasonChain/badges/large)
 
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+<br>
 
-
-## My Latest Blog Posts 👇
+## Hashnode Blog Posts 📘
 <!-- HASHNODE_BLOG:START -->
 - [LeetCode - 21. Merge Two Sorted Lists](https://jason60810.hashnode.dev//leetcode-21-merge-two-sorted-lists)
 - [Using REST APIs with Protobuf in a Next.js and TypeScript App (Backend in Go)](https://jason60810.hashnode.dev//using-rest-apis-with-protobuf-in-a-nextjs-and-typescript-app-backend-in-go)
@@ -21,7 +22,7 @@
 - [Learn PostCSS In 15 Minutes](https://jason60810.hashnode.dev//learn-postcss-in-15-minutes-3efbf640c85f)
 <!-- HASHNODE_BLOG:END -->
 
-## Blog posts
+## Medium Blog posts 📘
 <!-- BLOG-POST-LIST:START -->
 - [React Hooks Simplified](https://jasonscchien.medium.com/react-hooks-simplified-103c8601ba6e?source=rss-2cc1a5b0527b------2)
 - [Section 2: Block Scoping](https://jasonscchien.medium.com/section-2-block-scoping-af630067c440?source=rss-2cc1a5b0527b------2)
