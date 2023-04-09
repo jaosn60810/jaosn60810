@@ -1,4 +1,4 @@
-<a href="https://app.daily.dev/jason60810"><img src="https://github.com/jason60810/jason60810/blob/main/devcard.svg" width="400" alt="Jason Chen's Dev Card"/></a>
+<a href="https://app.daily.dev/jason60810"><img src="https://github.com/jaosn60810/jaosn60810/blob/main/devcard.svg" width="400" alt="Jason Chen's Dev Card"/></a>
 
 <img align="left" width="47%" src="https://github-readme-stats.vercel.app/api?username=jaosn60810&show_icons=true&theme=radical"/>
 
