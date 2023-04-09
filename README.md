@@ -1,4 +1,4 @@
-<a href="https://app.daily.dev/jason60810"><img src="https://api.daily.dev/devcards/6a5a6914fff5418abc5871be9e73ae35.png?r=lfr" width="400" alt="Jason Chen's Dev Card"/></a>
+<a href="https://app.daily.dev/DailyDevTips"><img src="https://github.com/rebelchris/rebelchris/blob/master/devcard.svg" width="400" alt="Chris Bongers's Dev Card"/></a>
 
 <img align="left" width="47%" src="https://github-readme-stats.vercel.app/api?username=jaosn60810&show_icons=true&theme=radical"/>
 
