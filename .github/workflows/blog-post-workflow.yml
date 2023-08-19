@@ -58,10 +58,20 @@ jobs:
               url=$(_jq '.canonical_url')
               blog_posts="${blog_posts}- [${title}](${url})\n"
           done
-          sed -i "/<!-- BLOG POSTS -->/c\\${blog_posts}" README.md
+          sed -i '/<!-- BLOG-POST-LIST:START -->/!b;n;c\'"${blog_posts}" README.md
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Commit and push if it changed
+        run: |
+          git diff
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          message="Updated README with the latest blog posts"
+          git commit -m "${message}" --allow-empty || true
+          git push      
   
   devcard:
     runs-on: ubuntu-latest
