@@ -39,39 +39,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-  update_codelove_blogs:
-    name: "Update Codelove Blogs"
+  update-readme-with-codelove-blog:
+    name: Update this repo's README with latest codelove blog posts
     runs-on: ubuntu-latest
     steps:
-      - name: "📥  Fetching Repository Contents"
-        uses: actions/checkout@v2
-
-      - name: "📚 Fetching Blog Posts and Update README"
-        run: |
-          response=$(curl -s "https://codelove.tw/api/posts?username=jason60810&per_page=5&page=1")
-          blog_posts=""
-          for row in $(echo "${response}" | jq -r '.[] | @base64'); do
-              _jq() {
-                 echo ${row} | base64 --decode | jq -r ${1}
-              }
-              title=$(_jq '.title')
-              url=$(_jq '.canonical_url')
-              blog_posts="${blog_posts}- [${title}](${url})\n"
-          done
-          sed -i '/<!-- BLOG-POST-LIST:START -->/!b;n;c\'"${blog_posts}" README.md
-        shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Commit and push if it changed
-        run: |
-          git diff
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A
-          message="Updated README with the latest blog posts"
-          git commit -m "${message}" --allow-empty || true
-          git push      
+      - uses: actions/checkout@v2
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          max_post_count: "20"
+          filter_comments: "" 
+          commit_message: "Updated readme with the latest Medium data"
+          remove_duplicates: true
+          feed_list: "https://codelove.tw/api/posts?username=jason60810"   
   
   devcard:
     runs-on: ubuntu-latest
