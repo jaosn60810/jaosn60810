@@ -46520,26 +46520,10 @@ async function getBlogOutline() {
 
   const outline = [];
 
-  const Logs = $("h1:contains('Logs')").next().children();
-
-  Logs.each((_, el) => {
-    const logDetail = {
-      title: "",
-      link: "",
-    };
-
-    const link = baseUrl + $(el).children().attr("href");
-
-    logDetail.title = $(el).text();
-    if (link.includes(" ")) {
-      logDetail.link = link.replace(" ", "%20");
-    } else {
-      logDetail.link = link;
-    }
-    outline.push(logDetail);
-  });
-
-  const outlineFilter = outline.slice(0, MAX_LINES);
+  const outlineFilter = data.slice(0, MAX_LINES).map(blog => ({
+    title: blog.title,
+    link: blog.canonical_url
+  }));
 
   return outlineFilter;
 }
