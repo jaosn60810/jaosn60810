@@ -46535,7 +46535,7 @@ Toolkit.run(async (tools) => {
 
   //找到 START TAG
   let startIndex = readmeContent.findIndex(
-    (content) => content.trim() === "<!-- UPDATE_WEISITE:START -->"
+    (content) => content.trim() === "<!-- UPDATE_CODELOVE:START -->"
   );
 
   // START TAG 不存在
@@ -46543,12 +46543,12 @@ Toolkit.run(async (tools) => {
     return tools.exit.failure("Not Found Start Update Comments");
 
   let endIndex = readmeContent.findIndex(
-    (content) => content.trim() === "<!-- UPDATE_WEISITE:END -->"
+    (content) => content.trim() === "<!-- UPDATE_CODELOVE:END -->"
   );
 
   const outline = await getBlogOutline();
 
-  //只有 <!-- UPDATE_WEISITE:START --> 沒有 <!-- UPDATE_WEISITE:END -->
+  //只有 <!-- UPDATE_CODELOVE:START --> 沒有 <!-- UPDATE_CODELOVE:END -->
   if (startIndex !== -1 && endIndex === -1) {
     startIndex++; //next line
 
@@ -46556,14 +46556,14 @@ Toolkit.run(async (tools) => {
       readmeContent.splice(
         startIndex + index,
         0,
-        `- ${o.title} [連結](${o.link})`
+        `- [${o.title}](${o.link})`
       );
     });
 
     readmeContent.splice(
       startIndex + outline.length,
       0,
-      "<!-- UPDATE_WEISITE:END -->"
+      "<!-- UPDATE_CODELOVE:END -->"
     );
 
     fs.writeFileSync("./README.md", readmeContent.join("\n"));
@@ -46592,7 +46592,7 @@ Toolkit.run(async (tools) => {
 
   startIndex++;
 
-  // 把 <!-- UPDATE_WEISITE:START --> 到 <!-- UPDATE_WEISITE:END --> 間的內容刪掉
+  // 把 <!-- UPDATE_CODELOVE:START --> 到 <!-- UPDATE_CODELOVE:END --> 間的內容刪掉
   // 取得 START ~ END 的間隙
   let gap = endIndex - startIndex;
   readmeContent.splice(startIndex, gap);
