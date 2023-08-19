@@ -8,6 +8,9 @@ on:
     # Runs every day
     - cron: "0 0 * * *"
   workflow_dispatch:
+  push:
+    branches:
+      - main # Replace with the branch you want to watch
 
 jobs:
   update-readme-with-blog:

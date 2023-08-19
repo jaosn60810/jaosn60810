@@ -46602,7 +46602,7 @@ Toolkit.run(async (tools) => {
     readmeContent.splice(
       startIndex + index,
       0,
-      `- ${o.title} [連結](${o.link})`
+      `- [${o.title}](${o.link})`
     );
   });
   tools.log.success("Updated README with the recent blog outline");
