@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Updates Blog Outline
-        uses: jaosn60810/jaosn60810@v0.1
+        uses: jaosn60810/jaosn60810@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMITTER_USERNAME: "jaosn60810"
