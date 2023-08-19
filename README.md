@@ -24,8 +24,7 @@
 
 ## Medium Blog posts 📘
 <!-- BLOG-POST-LIST:START -->
-- [useContext 常犯錯誤與如何在 TS 使用](http://codelove.tw/@jason60810/post/n3V0kq)
-
+- [React Hooks Simplified](https://jasonscchien.medium.com/react-hooks-simplified-103c8601ba6e?source=rss-2cc1a5b0527b------2)
 - [Section 2: Block Scoping](https://jasonscchien.medium.com/section-2-block-scoping-af630067c440?source=rss-2cc1a5b0527b------2)
 - [Svelte State Management Guide](https://jasonscchien.medium.com/svelte-state-management-guide-d686d61e7d0a?source=rss-2cc1a5b0527b------2)
 - [This is why you should lazy load routes and components in Vue](https://jasonscchien.medium.com/this-is-why-you-should-lazy-load-routes-and-components-in-vue-9e64de19f28?source=rss-2cc1a5b0527b------2)
