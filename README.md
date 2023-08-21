@@ -10,6 +10,7 @@
 
 ## Hashnode Blog Posts 📘
 <!-- HASHNODE_BLOG:START -->
+- [Common Mistakes in Conditional Rendering](https://jason60810.hashnode.dev//common-mistakes-in-conditional-rendering)
 - [Always Use a Custom Hook for Context API, Not useContext (React Context API, TypeScript)](https://jason60810.hashnode.dev//always-use-a-custom-hook-for-context-api-not-usecontext-react-context-api-typescript)
 - [LeetCode - 21. Merge Two Sorted Lists](https://jason60810.hashnode.dev//leetcode-21-merge-two-sorted-lists)
 - [Using REST APIs with Protobuf in a Next.js and TypeScript App (Backend in Go)](https://jason60810.hashnode.dev//using-rest-apis-with-protobuf-in-a-nextjs-and-typescript-app-backend-in-go)
@@ -19,7 +20,6 @@
 - [Svelte State Management Guide](https://jason60810.hashnode.dev//svelte-state-management-guide-d686d61e7d0a)
 - [This is why you should lazy load routes and components in Vue](https://jason60810.hashnode.dev//this-is-why-you-should-lazy-load-routes-and-components-in-vue-9e64de19f28)
 - [5 Async + Await Error Handling Strategies](https://jason60810.hashnode.dev//5-async-await-error-handling-strategies-7442885b853a)
-- [Working with Attributes in Vue](https://jason60810.hashnode.dev//working-with-attributes-in-vue-e5b7a3bea91c)
 <!-- HASHNODE_BLOG:END -->
 
 ## Medium Blog posts 📘
