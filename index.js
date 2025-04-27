@@ -68,11 +68,12 @@ const commitReadmeFile = async () => {
   if (!outputData.trim()) {
     // nothing to commit
     tools.log.info('No changes to commit.');
-    return;
+    return true;
   }
 
   await exec('git', ['commit', '-m', COMMIT_MSG]);
   await exec('git', ['push']);
+  return true;
 };
 
 // 爬自己的技術文章目錄
