@@ -43,6 +43,7 @@ const exec = (cmd, args = [], options = {}) =>
 
 const commitReadmeFile = async () => {
   try {
+    tools.log.debug('Starting commitReadmeFile');
     await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
 
     if (GITHUB_TOKEN) {
@@ -57,6 +58,7 @@ const commitReadmeFile = async () => {
     await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
 
     // Check if there is anything to commit first
+    tools.log.debug('Checking git status');
     const { outputData } = await exec('git', ['status', '--porcelain'], {
       stdio: 'pipe',
     });
@@ -70,11 +72,13 @@ const commitReadmeFile = async () => {
     }
 
     // Only add and commit if there are changes
+    tools.log.debug('Changes detected, proceeding with commit');
     await exec('git', ['add', '.']);
     await exec('git', ['commit', '-m', COMMIT_MSG]);
     await exec('git', ['push']);
     return true;
   } catch (err) {
+    tools.log.debug('Error in commitReadmeFile: ' + JSON.stringify(err));
     if (err.code === 1 && !err.outputData) {
       tools.log.info('No changes to commit');
       return true;
@@ -138,12 +142,19 @@ Toolkit.run(async (tools) => {
     fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
     try {
+      tools.log.debug('Starting main execution flow');
       const result = await commitReadmeFile();
+      tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
       if (result === true) {
         tools.log.success('No changes needed or commit successful');
         return tools.exit.success('Success');
       }
     } catch (err) {
+      tools.log.debug('Error in main execution flow: ' + JSON.stringify(err));
+      if (err.code === 1 && !err.outputData) {
+        tools.log.info('No changes to commit');
+        return tools.exit.success('No changes needed');
+      }
       tools.log.debug('Something went wrong');
       return tools.exit.failure(err);
     }
@@ -177,12 +188,15 @@ Toolkit.run(async (tools) => {
   fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
   try {
+    tools.log.debug('Starting main execution flow');
     const result = await commitReadmeFile();
+    tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
     if (result === true) {
       tools.log.success('No changes needed or commit successful');
       return tools.exit.success('Success');
     }
   } catch (err) {
+    tools.log.debug('Error in main execution flow: ' + JSON.stringify(err));
     if (err.code === 1 && !err.outputData) {
       tools.log.info('No changes to commit');
       return tools.exit.success('No changes needed');
