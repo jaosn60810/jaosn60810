@@ -3,7 +3,6 @@ const { Toolkit } = require('actions-toolkit');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const axios = require('axios');
-const { spawn } = require('child_process');
 
 // yml input
 const GITHUB_TOKEN = core.getInput('GITHUB_TOKEN');
@@ -15,124 +14,6 @@ const COMMIT_MSG = core.getInput('COMMIT_MSG');
 core.setSecret(GITHUB_TOKEN);
 
 const baseUrl = 'https://jaosn60810.github.io';
-
-const exec = (cmd, args = [], options = {}) =>
-  new Promise((resolve, reject) => {
-    let outputData = '';
-    const optionsToCLI = {
-      ...options,
-    };
-    if (!optionsToCLI.stdio) {
-      Object.assign(optionsToCLI, { stdio: 'pipe' });
-    }
-    const app = spawn(cmd, args, optionsToCLI);
-    if (app.stdout) {
-      app.stdout.on('data', function (data) {
-        outputData += data.toString();
-      });
-    }
-
-    app.on('close', (code) => {
-      // Don't treat git commands as errors
-      if (cmd === 'git') {
-        return resolve({ code, outputData });
-      }
-      if (code !== 0) {
-        return reject({ code, outputData });
-      }
-      return resolve({ code, outputData });
-    });
-    app.on('error', () => reject({ code: 1, outputData }));
-  });
-
-const commitReadmeFile = async () => {
-  tools.log.debug('Starting commitReadmeFile');
-
-  try {
-    // Configure git
-    await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
-    await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
-    await exec('git', ['config', 'pull.rebase', 'true']);
-
-    if (GITHUB_TOKEN) {
-      await exec('git', [
-        'remote',
-        'set-url',
-        'origin',
-        `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
-      ]);
-    }
-
-    // Check for changes
-    const { outputData: status } = await exec(
-      'git',
-      ['status', '--porcelain'],
-      {
-        stdio: 'pipe',
-      }
-    );
-
-    if (!status.trim()) {
-      tools.log.info('No changes to commit.');
-      return true;
-    }
-
-    // Pull before committing
-    try {
-      await exec('git', ['pull', '--rebase', 'origin', 'main']);
-    } catch (pullErr) {
-      tools.log.warn(
-        'Pull failed, continuing with commit:',
-        pullErr.outputData
-      );
-    }
-
-    // Add and commit changes
-    await exec('git', ['add', '.']);
-    await exec('git', ['commit', '-m', COMMIT_MSG]);
-
-    // Push with retries
-    let pushAttempts = 0;
-    const maxPushAttempts = 3;
-
-    while (pushAttempts < maxPushAttempts) {
-      try {
-        await exec('git', ['push', 'origin', 'main']);
-        tools.log.info('Push successful');
-        return true;
-      } catch (pushErr) {
-        pushAttempts++;
-        tools.log.warn(
-          `Push attempt ${pushAttempts} failed: ${pushErr.outputData}`
-        );
-
-        if (pushAttempts < maxPushAttempts) {
-          try {
-            await exec('git', ['pull', '--rebase', 'origin', 'main']);
-          } catch (pullErr) {
-            tools.log.warn('Pull before retry failed:', pullErr.outputData);
-          }
-        } else {
-          throw pushErr;
-        }
-      }
-    }
-
-    return true;
-  } catch (err) {
-    // Special handling for "nothing to commit" which is actually a success case
-    if (
-      err.outputData &&
-      (err.outputData.includes('nothing to commit') ||
-        err.outputData.includes('working tree clean'))
-    ) {
-      tools.log.info('Nothing to commit, skipping.');
-      return true;
-    }
-
-    throw err;
-  }
-};
 
 // 爬自己的技術文章目錄
 async function getBlogOutline() {
@@ -188,16 +69,8 @@ Toolkit.run(async (tools) => {
 
     fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
-    try {
-      const result = await commitReadmeFile();
-      if (result === true) {
-        tools.log.success('No changes needed or commit successful');
-        return tools.exit.success('Success');
-      }
-    } catch (err) {
-      tools.log.debug('Something went wrong');
-      return tools.exit.failure(err);
-    }
+    tools.log.success('Success');
+    return tools.exit.success('Success');
   }
 
   const oldContent = readmeContent.slice(startIndex + 1, endIndex).join('\n');
@@ -227,15 +100,6 @@ Toolkit.run(async (tools) => {
 
   fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
-  try {
-    const result = await commitReadmeFile();
-    tools.log.debug('commitReadmeFile result: ' + result);
-    if (result === true) {
-      tools.log.success('No changes needed or commit successful');
-      return tools.exit.success('Success');
-    }
-  } catch (err) {
-    tools.log.debug('Something went wrong');
-    return tools.exit.failure(err);
-  }
+  tools.log.success('Success');
+  return tools.exit.success('Success');
 });
