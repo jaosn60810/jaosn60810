@@ -46,51 +46,42 @@ const exec = (cmd, args = [], options = {}) =>
   });
 
 const commitReadmeFile = async () => {
+  tools.log.debug('Starting commitReadmeFile');
+  await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
+  await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
+  if (GITHUB_TOKEN) {
+    await exec('git', [
+      'remote',
+      'set-url',
+      'origin',
+      `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
+    ]);
+  }
+
+  // only run git commit if there are actual changes
+  const { outputData: status } = await exec('git', ['status', '--porcelain'], {
+    stdio: 'pipe',
+  });
+  if (!status.trim()) {
+    tools.log.info('No changes to commit.');
+    return true;
+  }
+
+  // commit & push in a try/catch so "nothing to commit" is swallowed
   try {
-    tools.log.debug('Starting commitReadmeFile');
-    await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
-
-    if (GITHUB_TOKEN) {
-      await exec('git', [
-        'remote',
-        'set-url',
-        'origin',
-        `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
-      ]);
-    }
-
-    await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
-
-    // Check if there is anything to commit first
-    tools.log.debug('Checking git status');
-    const { outputData } = await exec('git', ['status', '--porcelain'], {
-      stdio: 'pipe',
-    });
-    tools.log.debug(
-      'DEBUG: git status --porcelain output: ' + JSON.stringify(outputData)
-    );
-
-    if (!outputData || !outputData.trim()) {
-      tools.log.info('No changes to commit.');
-      return true;
-    }
-
-    // Only add and commit if there are changes
-    tools.log.debug('Changes detected, proceeding with commit');
     await exec('git', ['add', '.']);
     await exec('git', ['commit', '-m', COMMIT_MSG]);
-    await exec('git', ['push']);
-    return true;
   } catch (err) {
-    tools.log.debug('Error in commitReadmeFile: ' + JSON.stringify(err));
     if (err.code === 1 && !err.outputData) {
-      tools.log.info('No changes to commit');
-      return true;
+      tools.log.info('Nothing to commit, skipping.');
+    } else {
+      throw err;
     }
-    throw err;
   }
-};
 
+  await exec('git', ['push']);
+  return true;
+};
 // 爬自己的技術文章目錄
 async function getBlogOutline() {
   const { data } = await axios.get(
