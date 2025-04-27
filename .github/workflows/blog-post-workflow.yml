@@ -42,22 +42,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  # update_blogs:
-  #   name: 'Update Blogs'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: '📥  Fetching Repository Contents'
-  #       uses: actions/checkout@main
-
-  #     - name: '📚  Hashnode Updater'
-  #       uses: 'varunsridharan/action-hashnode-blog@1.2'
-  #       with:
-  #         USERNAME: 'jason60810' # Hashnode Username
-  #         BLOG_URL: 'https://jason60810.hashnode.dev' # Blog URL
-  #         COUNT: 10 # MAX Visisble
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   codelove_blog:
     runs-on: ubuntu-latest
     permissions:
@@ -72,10 +56,6 @@ jobs:
           COMMITTER_USERNAME: 'jaosn60810'
           COMMITTER_EMAIL: 'jason60810@gmail.com'
           MAX_LINES: '8'
-      - name: Commit
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Update generated README'
 
   devcard:
     runs-on: ubuntu-latest
