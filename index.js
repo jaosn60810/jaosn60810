@@ -27,14 +27,13 @@ const exec = (cmd, args = [], options = {}) =>
     }
     const app = spawn(cmd, args, optionsToCLI);
     if (app.stdout) {
-      // Only needed for pipes
       app.stdout.on('data', function (data) {
         outputData += data.toString();
       });
     }
 
     app.on('close', (code) => {
-      if (code !== 0) {
+      if (code !== 0 && cmd !== 'git' && args[0] !== 'status') {
         return reject({ code, outputData });
       }
       return resolve({ code, outputData });
