@@ -47,82 +47,93 @@ const exec = (cmd, args = [], options = {}) =>
 
 const commitReadmeFile = async () => {
   tools.log.debug('Starting commitReadmeFile');
-  await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
-  await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
 
-  // Set pull to use rebase strategy
-  await exec('git', ['config', 'pull.rebase', 'true']);
-
-  if (GITHUB_TOKEN) {
-    await exec('git', [
-      'remote',
-      'set-url',
-      'origin',
-      `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
-    ]);
-  }
-
-  // only run git commit if there are actual changes
-  const { outputData: status } = await exec('git', ['status', '--porcelain'], {
-    stdio: 'pipe',
-  });
-  if (!status.trim()) {
-    tools.log.info('No changes to commit.');
-    return true;
-  }
-
-  // Pull before attempting any commits to get latest changes
   try {
-    tools.log.debug('Pulling latest changes from remote');
-    await exec('git', ['pull', '--rebase', 'origin', 'main']);
-  } catch (err) {
-    tools.log.warn('Pull failed, but proceeding with commit:', err.outputData);
-  }
+    // Configure git
+    await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
+    await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
+    await exec('git', ['config', 'pull.rebase', 'true']);
 
-  // commit & push in a try/catch so "nothing to commit" is swallowed
-  try {
+    if (GITHUB_TOKEN) {
+      await exec('git', [
+        'remote',
+        'set-url',
+        'origin',
+        `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
+      ]);
+    }
+
+    // Check for changes
+    const { outputData: status } = await exec(
+      'git',
+      ['status', '--porcelain'],
+      {
+        stdio: 'pipe',
+      }
+    );
+
+    if (!status.trim()) {
+      tools.log.info('No changes to commit.');
+      return true;
+    }
+
+    // Pull before committing
+    try {
+      await exec('git', ['pull', '--rebase', 'origin', 'main']);
+    } catch (pullErr) {
+      tools.log.warn(
+        'Pull failed, continuing with commit:',
+        pullErr.outputData
+      );
+    }
+
+    // Add and commit changes
     await exec('git', ['add', '.']);
     await exec('git', ['commit', '-m', COMMIT_MSG]);
-  } catch (err) {
-    if (err.code === 1 && !err.outputData) {
-      tools.log.info('Nothing to commit, skipping.');
-    } else {
-      throw err;
-    }
-  }
 
-  // Push with retries
-  let pushAttempts = 0;
-  const maxPushAttempts = 3;
+    // Push with retries
+    let pushAttempts = 0;
+    const maxPushAttempts = 3;
 
-  while (pushAttempts < maxPushAttempts) {
-    try {
-      tools.log.debug(`Push attempt ${pushAttempts + 1}`);
-      await exec('git', ['push', 'origin', 'main']);
-      tools.log.info('Push successful');
-      return true;
-    } catch (err) {
-      pushAttempts++;
-      tools.log.warn(`Push attempt ${pushAttempts} failed: ${err.outputData}`);
+    while (pushAttempts < maxPushAttempts) {
+      try {
+        await exec('git', ['push', 'origin', 'main']);
+        tools.log.info('Push successful');
+        return true;
+      } catch (pushErr) {
+        pushAttempts++;
+        tools.log.warn(
+          `Push attempt ${pushAttempts} failed: ${pushErr.outputData}`
+        );
 
-      // If not the last attempt, try pulling again before retry
-      if (pushAttempts < maxPushAttempts) {
-        try {
-          tools.log.debug('Pulling latest changes before next push attempt');
-          await exec('git', ['pull', '--rebase', 'origin', 'main']);
-        } catch (pullErr) {
-          tools.log.warn('Pull before retry failed:', pullErr.outputData);
+        if (pushAttempts < maxPushAttempts) {
+          try {
+            await exec('git', ['pull', '--rebase', 'origin', 'main']);
+          } catch (pullErr) {
+            tools.log.warn('Pull before retry failed:', pullErr.outputData);
+          }
+        } else {
+          throw pushErr;
         }
-      } else {
-        // Last attempt failed
-        tools.log.error('All push attempts failed');
-        throw err;
       }
     }
-  }
 
-  return true;
+    return true;
+  } catch (err) {
+    // Special handling for "nothing to commit" which is actually a success case
+    if (
+      err.outputData &&
+      (err.outputData.includes('nothing to commit') ||
+        err.outputData.includes('working tree clean'))
+    ) {
+      tools.log.info('Nothing to commit, skipping.');
+      return true;
+    }
+
+    throw err;
+  }
 };
+
 // 爬自己的技術文章目錄
 async function getBlogOutline() {
   const { data } = await axios.get(
@@ -184,14 +195,9 @@ Toolkit.run(async (tools) => {
         return tools.exit.success('Success');
       }
     } catch (err) {
-      if (err.code === 1 && !err.outputData) {
-        tools.log.info('No changes to commit');
-        return tools.exit.success('No changes needed');
-      }
       tools.log.debug('Something went wrong');
       return tools.exit.failure(err);
     }
-    tools.exit.success('Wrote to README');
   }
 
   const oldContent = readmeContent.slice(startIndex + 1, endIndex).join('\n');
@@ -223,18 +229,13 @@ Toolkit.run(async (tools) => {
 
   try {
     const result = await commitReadmeFile();
-    tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
+    tools.log.debug('commitReadmeFile result: ' + result);
     if (result === true) {
       tools.log.success('No changes needed or commit successful');
       return tools.exit.success('Success');
     }
   } catch (err) {
-    if (err.code === 1 && !err.outputData) {
-      tools.log.info('No changes to commit');
-      return tools.exit.success('No changes needed');
-    }
     tools.log.debug('Something went wrong');
     return tools.exit.failure(err);
   }
-  tools.exit.success('Success');
 });
