@@ -55,9 +55,8 @@ const commitReadmeFile = async () => {
   }
 
   await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
-  await exec('git', ['add', '.']);
 
-  // Check if there is anything to commit
+  // Check if there is anything to commit first
   const { outputData } = await exec('git', ['status', '--porcelain'], {
     stdio: 'pipe',
   });
@@ -65,12 +64,13 @@ const commitReadmeFile = async () => {
     'DEBUG: git status --porcelain output: ' + JSON.stringify(outputData)
   );
 
-  if (!outputData.trim()) {
-    // nothing to commit
+  if (!outputData || !outputData.trim()) {
     tools.log.info('No changes to commit.');
     return true;
   }
 
+  // Only add and commit if there are changes
+  await exec('git', ['add', '.']);
   await exec('git', ['commit', '-m', COMMIT_MSG]);
   await exec('git', ['push']);
   return true;
