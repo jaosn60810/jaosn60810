@@ -58,15 +58,15 @@ jobs:
   #       env:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  hello_world_job:
+  codelove_blog:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    name: Updates Blog Outline
+    name: Updates Codelove Blog Outline
     steps:
       - uses: actions/checkout@v3
-      - name: Updates Blog Outline
-        uses: jaosn60810/jaosn60810@main
+      - name: Updates Codelove Blog Outline
+        uses: jaosn60810/readme-codelove-list@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMITTER_USERNAME: 'jaosn60810'
