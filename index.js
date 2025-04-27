@@ -189,6 +189,7 @@ Toolkit.run(async (tools) => {
 
   try {
     const result = await commitReadmeFile();
+    tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
     if (result === true) {
       tools.log.success('No changes needed or commit successful');
       return tools.exit.success('Success');
