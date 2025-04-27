@@ -24,7 +24,7 @@ jobs:
           filter_comments: ''
           commit_message: 'Updated readme with the latest Medium data'
           remove_duplicates: true
-          feed_list: 'https://medium.com/feed/@jasonscchien,https://jason60810.hashnode.dev/rss.xml'
+          feed_list: 'https://medium.com/feed/@jasonscchien'
 
   update_blogs:
     name: 'Hashnode Latest Blogs'
