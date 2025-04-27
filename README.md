@@ -39,6 +39,6 @@
 
 ## CodeLove
 <!-- UPDATE_CODELOVE:START -->
-- [Conditional Rendering 常見錯誤1](http://codelove.tw/@jason60810/post/vx8M53)
+- [Conditional Rendering 常見錯誤](http://codelove.tw/@jason60810/post/vx8M53)
 - [useContext 常犯錯誤與如何在 TS 使用](http://codelove.tw/@jason60810/post/n3V0kq)
 <!-- UPDATE_CODELOVE:END -->
