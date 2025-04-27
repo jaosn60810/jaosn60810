@@ -146,15 +146,12 @@ Toolkit.run(async (tools) => {
     fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
     try {
-      tools.log.debug('Starting main execution flow');
       const result = await commitReadmeFile();
-      tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
       if (result === true) {
         tools.log.success('No changes needed or commit successful');
         return tools.exit.success('Success');
       }
     } catch (err) {
-      tools.log.debug('Error in main execution flow: ' + JSON.stringify(err));
       if (err.code === 1 && !err.outputData) {
         tools.log.info('No changes to commit');
         return tools.exit.success('No changes needed');
@@ -162,6 +159,7 @@ Toolkit.run(async (tools) => {
       tools.log.debug('Something went wrong');
       return tools.exit.failure(err);
     }
+    tools.exit.success('Wrote to README');
   }
 
   const oldContent = readmeContent.slice(startIndex + 1, endIndex).join('\n');
@@ -192,15 +190,12 @@ Toolkit.run(async (tools) => {
   fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
   try {
-    tools.log.debug('Starting main execution flow');
     const result = await commitReadmeFile();
-    tools.log.debug('commitReadmeFile result: ' + JSON.stringify(result));
     if (result === true) {
       tools.log.success('No changes needed or commit successful');
       return tools.exit.success('Success');
     }
   } catch (err) {
-    tools.log.debug('Error in main execution flow: ' + JSON.stringify(err));
     if (err.code === 1 && !err.outputData) {
       tools.log.info('No changes to commit');
       return tools.exit.success('No changes needed');
@@ -208,4 +203,5 @@ Toolkit.run(async (tools) => {
     tools.log.debug('Something went wrong');
     return tools.exit.failure(err);
   }
+  tools.exit.success('Success');
 });
