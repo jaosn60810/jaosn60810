@@ -57,7 +57,10 @@ jobs:
           COMMITTER_USERNAME: 'jaosn60810'
           COMMITTER_EMAIL: 'jason60810@gmail.com'
           MAX_LINES: '8'
-
+      - name: Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: 'Update generated README'
   devcard:
     runs-on: ubuntu-latest
     steps:
