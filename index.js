@@ -23,7 +23,7 @@ const exec = (cmd, args = [], options = {}) =>
       ...options,
     };
     if (!optionsToCLI.stdio) {
-      Object.assign(optionsToCLI, { stdio: ['inherit', 'inherit', 'inherit'] });
+      Object.assign(optionsToCLI, { stdio: 'pipe' });
     }
     const app = spawn(cmd, args, optionsToCLI);
     if (app.stdout) {
