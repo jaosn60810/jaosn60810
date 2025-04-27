@@ -61,8 +61,13 @@ const commitReadmeFile = async () => {
   const { outputData } = await exec('git', ['status', '--porcelain'], {
     stdio: 'pipe',
   });
+  console.log(
+    'DEBUG: git status --porcelain output:',
+    JSON.stringify(outputData)
+  );
   if (!outputData.trim()) {
     // nothing to commit
+    tools.log.info('No changes to commit.');
     return;
   }
 
