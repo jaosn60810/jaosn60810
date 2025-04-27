@@ -49,6 +49,10 @@ const commitReadmeFile = async () => {
   tools.log.debug('Starting commitReadmeFile');
   await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
   await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
+
+  // Set pull to use rebase strategy
+  await exec('git', ['config', 'pull.rebase', 'true']);
+
   if (GITHUB_TOKEN) {
     await exec('git', [
       'remote',
@@ -67,6 +71,14 @@ const commitReadmeFile = async () => {
     return true;
   }
 
+  // Pull before attempting any commits to get latest changes
+  try {
+    tools.log.debug('Pulling latest changes from remote');
+    await exec('git', ['pull', '--rebase', 'origin', 'main']);
+  } catch (err) {
+    tools.log.warn('Pull failed, but proceeding with commit:', err.outputData);
+  }
+
   // commit & push in a try/catch so "nothing to commit" is swallowed
   try {
     await exec('git', ['add', '.']);
@@ -79,14 +91,36 @@ const commitReadmeFile = async () => {
     }
   }
 
-  // Pull before pushing to handle remote changes
-  try {
-    await exec('git', ['pull', '--rebase', 'origin', 'main']);
-  } catch (err) {
-    tools.log.warn('Pull failed, attempting to push anyway:', err.outputData);
+  // Push with retries
+  let pushAttempts = 0;
+  const maxPushAttempts = 3;
+
+  while (pushAttempts < maxPushAttempts) {
+    try {
+      tools.log.debug(`Push attempt ${pushAttempts + 1}`);
+      await exec('git', ['push', 'origin', 'main']);
+      tools.log.info('Push successful');
+      return true;
+    } catch (err) {
+      pushAttempts++;
+      tools.log.warn(`Push attempt ${pushAttempts} failed: ${err.outputData}`);
+
+      // If not the last attempt, try pulling again before retry
+      if (pushAttempts < maxPushAttempts) {
+        try {
+          tools.log.debug('Pulling latest changes before next push attempt');
+          await exec('git', ['pull', '--rebase', 'origin', 'main']);
+        } catch (pullErr) {
+          tools.log.warn('Pull before retry failed:', pullErr.outputData);
+        }
+      } else {
+        // Last attempt failed
+        tools.log.error('All push attempts failed');
+        throw err;
+      }
+    }
   }
 
-  await exec('git', ['push']);
   return true;
 };
 // 爬自己的技術文章目錄
