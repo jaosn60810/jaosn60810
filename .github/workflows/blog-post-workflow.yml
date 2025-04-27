@@ -53,6 +53,7 @@ jobs:
         uses: jaosn60810/readme-codelove-list@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CODELOVE_USERNAME: 'jason60810'
           COMMITTER_USERNAME: 'jaosn60810'
           COMMITTER_EMAIL: 'jason60810@gmail.com'
           MAX_LINES: '8'
