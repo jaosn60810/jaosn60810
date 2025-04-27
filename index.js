@@ -33,7 +33,11 @@ const exec = (cmd, args = [], options = {}) =>
     }
 
     app.on('close', (code) => {
-      if (code !== 0 && cmd !== 'git' && args[0] !== 'status') {
+      // Don't treat git status as an error
+      if (cmd === 'git' && args[0] === 'status') {
+        return resolve({ code, outputData });
+      }
+      if (code !== 0) {
         return reject({ code, outputData });
       }
       return resolve({ code, outputData });
