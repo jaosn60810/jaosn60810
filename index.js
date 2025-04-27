@@ -131,13 +131,15 @@ Toolkit.run(async (tools) => {
     fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
     try {
-      // await commitReadmeFile();
-      tools.log.success('Commit file success');
-    } catch (error) {
+      const result = await commitReadmeFile();
+      if (result === true) {
+        tools.log.success('No changes needed or commit successful');
+        return tools.exit.success('Success');
+      }
+    } catch (err) {
       tools.log.debug('Something went wrong');
-      return tools.exit.failure(error);
+      return tools.exit.failure(err);
     }
-    tools.exit.success('Wrote to README');
   }
 
   const oldContent = readmeContent.slice(startIndex + 1, endIndex).join('\n');
@@ -168,8 +170,11 @@ Toolkit.run(async (tools) => {
   fs.writeFileSync('./README.md', readmeContent.join('\n'));
 
   try {
-    await commitReadmeFile();
-    tools.log.success('Commit file success');
+    const result = await commitReadmeFile();
+    if (result === true) {
+      tools.log.success('No changes needed or commit successful');
+      return tools.exit.success('Success');
+    }
   } catch (err) {
     if (err.code === 1 && !err.outputData) {
       tools.log.info('No changes to commit');
@@ -178,5 +183,4 @@ Toolkit.run(async (tools) => {
     tools.log.debug('Something went wrong');
     return tools.exit.failure(err);
   }
-  tools.exit.success('Success');
 });
