@@ -171,6 +171,10 @@ Toolkit.run(async (tools) => {
     await commitReadmeFile();
     tools.log.success('Commit file success');
   } catch (err) {
+    if (err.code === 1 && !err.outputData) {
+      tools.log.info('No changes to commit');
+      return tools.exit.success('No changes needed');
+    }
     tools.log.debug('Something went wrong');
     return tools.exit.failure(err);
   }
