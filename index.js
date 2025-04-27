@@ -42,37 +42,45 @@ const exec = (cmd, args = [], options = {}) =>
   });
 
 const commitReadmeFile = async () => {
-  await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
+  try {
+    await exec('git', ['config', '--global', 'user.email', COMMITTER_EMAIL]);
 
-  if (GITHUB_TOKEN) {
-    await exec('git', [
-      'remote',
-      'set-url',
-      'origin',
-      `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
-    ]);
-  }
+    if (GITHUB_TOKEN) {
+      await exec('git', [
+        'remote',
+        'set-url',
+        'origin',
+        `https://${GITHUB_TOKEN}@github.com/${process.env.GITHUB_REPOSITORY}.git`,
+      ]);
+    }
 
-  await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
+    await exec('git', ['config', '--global', 'user.name', COMMITTER_USERNAME]);
 
-  // Check if there is anything to commit first
-  const { outputData } = await exec('git', ['status', '--porcelain'], {
-    stdio: 'pipe',
-  });
-  tools.log.debug(
-    'DEBUG: git status --porcelain output: ' + JSON.stringify(outputData)
-  );
+    // Check if there is anything to commit first
+    const { outputData } = await exec('git', ['status', '--porcelain'], {
+      stdio: 'pipe',
+    });
+    tools.log.debug(
+      'DEBUG: git status --porcelain output: ' + JSON.stringify(outputData)
+    );
 
-  if (!outputData || !outputData.trim()) {
-    tools.log.info('No changes to commit.');
+    if (!outputData || !outputData.trim()) {
+      tools.log.info('No changes to commit.');
+      return true;
+    }
+
+    // Only add and commit if there are changes
+    await exec('git', ['add', '.']);
+    await exec('git', ['commit', '-m', COMMIT_MSG]);
+    await exec('git', ['push']);
     return true;
+  } catch (err) {
+    if (err.code === 1 && !err.outputData) {
+      tools.log.info('No changes to commit');
+      return true;
+    }
+    throw err;
   }
-
-  // Only add and commit if there are changes
-  await exec('git', ['add', '.']);
-  await exec('git', ['commit', '-m', COMMIT_MSG]);
-  await exec('git', ['push']);
-  return true;
 };
 
 // 爬自己的技術文章目錄
