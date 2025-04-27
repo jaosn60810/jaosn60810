@@ -54,7 +54,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CODELOVE_USERNAME: 'jason60810'
-          MAX_LINES: '8'
       - name: Commit
         uses: EndBug/add-and-commit@v9
         with:
