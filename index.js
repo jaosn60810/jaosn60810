@@ -79,6 +79,13 @@ const commitReadmeFile = async () => {
     }
   }
 
+  // Pull before pushing to handle remote changes
+  try {
+    await exec('git', ['pull', '--rebase', 'origin', 'main']);
+  } catch (err) {
+    tools.log.warn('Pull failed, attempting to push anyway:', err.outputData);
+  }
+
   await exec('git', ['push']);
   return true;
 };
