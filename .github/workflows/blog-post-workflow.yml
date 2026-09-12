@@ -27,20 +27,16 @@ jobs:
           feed_list: 'https://medium.com/feed/@jasonscchien'
 
   update_blogs:
-    name: 'Hashnode Latest Blogs'
+    name: Hashnode Latest Blogs
     runs-on: ubuntu-latest
     steps:
-      - name: 'Fetch Repository Contents'
-        uses: actions/checkout@main
-
-      - name: 'Hashnode Blog Action'
-        uses: 'Sachin-chaurasiya/hashnode-blog-action@main'
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          HASHNODE_PUBLICATION_NAME: 'jason60810.hashnode.dev'
-          POST_COUNT: 10
-          FORMAT: 'list'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          comment_tag_name: HASHNODE_BLOG
+          max_post_count: '10'
+          commit_message: 'Updated readme with the latest Hashnode data'
+          feed_list: 'https://jason60810.hashnode.dev/rss.xml'
 
   codelove_blog:
     runs-on: ubuntu-latest
