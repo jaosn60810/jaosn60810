@@ -38,6 +38,33 @@ jobs:
           commit_message: 'Updated readme with the latest Hashnode data'
           feed_list: 'https://jason60810.hashnode.dev/rss.xml'
 
+  update_stats:
+    name: Update GitHub stats cards
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=jaosn60810&show_icons=true&theme=radical
+          path: stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: 'true'
+      - name: Generate top languages card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=jaosn60810&layout=compact
+          path: top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: 'true'
+      - name: Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'stats.svg top-langs.svg'
+          message: 'Update GitHub stats cards'
+
   codelove_blog:
     runs-on: ubuntu-latest
     permissions:
