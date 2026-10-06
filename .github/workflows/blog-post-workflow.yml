@@ -65,22 +65,6 @@ jobs:
           add: 'stats.svg top-langs.svg'
           message: 'Update GitHub stats cards'
 
-  codelove_blog:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    name: Updates Codelove Blog Outline
-    steps:
-      - uses: actions/checkout@v3
-      - name: Updates Codelove Blog Outline
-        uses: jaosn60810/readme-codelove-list@main
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CODELOVE_USERNAME: 'jason60810'
-      - name: Commit
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Update generated README'
   devcard:
     runs-on: ubuntu-latest
     steps:
